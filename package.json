@@ -1,0 +1,28 @@
+{
+  "name": "seneca-store-query",
+  "version": "0.0.1",
+  "description": "seneca store extended query",
+  "main": "store-query.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihaidma/seneca-store-query.git"
+  },
+  "keywords": [
+    "seneca",
+    "store",
+    "query"
+  ],
+  "author": "Mihai Dima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mihaidma/seneca-store-query/issues"
+  },
+  "homepage": "https://github.com/mihaidma/seneca-store-query#readme",
+  "dependencies": {
+    "lodash": "3.10.1",
+    "node-uuid": "1.4.7"
+  }
+}
