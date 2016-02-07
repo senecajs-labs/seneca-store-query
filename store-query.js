@@ -43,32 +43,14 @@ module.exports = function queryBuilder (options) {
   //   }
   // })
 
-  // seneca.add({role: storeName, hook: 'load'}, function (args, done) {
-  //   var qent = args.qent
-  //   var q = args.q
+  seneca.add({role: storeName, hook: 'load'}, function (args, done) {
+    var qent = args.qent
+    var q = args.q
 
-  //   QueryBuilder.selectstm(qent, q, function (err, query) {
-  //     if (err) {
-  //       return done({code: 'load', tag: args.tag$, store: storeName, query: query, error: err})
-  //     }
-
-  //     execQuery(query, function (err, res) {
-  //       if (error(query, args, err)) {
-  //         var trace = new Error()
-  //         seneca.log.error(query.text, query.values, trace.stack)
-  //         return done({code: 'load', tag: args.tag$, store: storeName, query: query, error: err})
-  //       }
-
-  //       var ent = null
-  //       if (res.rows && res.rows.length > 0) {
-  //         var attrs = internals.transformDBRowToJSObject(res.rows[0])
-  //         ent = RelationalStore.makeent(qent, attrs)
-  //       }
-  //       seneca.log(args.tag$, 'load', ent)
-  //       return done(null, ent)
-  //     })
-  //   })
-  // })
+    QueryBuilder.selectstm(qent, q, function (err, query) {
+      return done(err, {query: query})
+    })
+  })
 
   seneca.add({role: storeName, hook: 'list'}, function (args, done) {
     var qent = args.qent
