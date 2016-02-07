@@ -9,39 +9,21 @@ module.exports = function queryBuilder (options) {
   var seneca = this
   var storeName = 'postgresql-store'
 
-  // seneca.add({role: storeName, hook: 'save'}, function (args, done) {
-  //   var ent = args.ent
-  //   var query
-  //   var update = !!ent.id
+  seneca.add({role: storeName, hook: 'save'}, function (args, done) {
+    var ent = args.ent
+    var query
+    var update = !!ent.id
 
-  //   if (update) {
-  //     query = QueryBuilder.updatestm(ent)
-  //     execQuery(query, function (err, res) {
-  //       if (error(query, args, err)) {
-  //         seneca.log.error(query.text, query.values, err)
-  //         return done({code: 'update', tag: args.tag$, store: storeName, query: query, error: err})
-  //       }
+    if (update) {
+      query = QueryBuilder.updatestm(ent)
+    }
+    else {
+      ent.id = ent.id$ || Uuid()
+      query = QueryBuilder.savestm(ent)
+    }
 
-  //       seneca.log(args.tag$, 'update', ent)
-  //       return done(null, ent)
-  //     })
-  //   }
-  //   else {
-  //     ent.id = ent.id$ || Uuid()
-
-  //     query = QueryBuilder.savestm(ent)
-
-  //     execQuery(query, function (err, res) {
-  //       if (error(query, args, err)) {
-  //         seneca.log.error(query.text, query.values, err)
-  //         return done({code: 'save', tag: args.tag$, store: storeName, query: query, error: err})
-  //       }
-
-  //       seneca.log(args.tag$, 'save', ent)
-  //       return done(null, ent)
-  //     })
-  //   }
-  // })
+    return done(null, {query: query, operation: update ? 'update' : 'save'})
+  })
 
   seneca.add({role: storeName, hook: 'load'}, function (args, done) {
     var qent = args.qent
