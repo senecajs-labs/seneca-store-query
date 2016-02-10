@@ -81,69 +81,7 @@ module.exports = function queryBuilder (options) {
     var qent = args.qent
     var q = args.q
 
-    // if (q.all$) {
-      var query = QueryBuilder.deletestm(qent, q)
-      return done(null, {query: query})
-
-      // execQuery(query, function (err, res) {
-      //   if (!error(query, args, err, done)) {
-      //     seneca.log(args.tag$, 'remove', res.rowCount)
-      //     return done()
-      //   }
-      //   else if (err) {
-      //     return done(err)
-      //   }
-      //   else {
-      //     err = new Error('no candidate for deletion')
-      //     err.critical = false
-      //     return done(err)
-      //   }
-      // })
-    // }
-    // else {
-      // QueryBuilder.selectstm(qent, q, function (err, selectQuery) {
-      //   if (err) {
-      //     var errorDetails = {
-      //       message: err.message,
-      //       err: err,
-      //       stack: err.stack,
-      //       query: query
-      //     }
-      //     seneca.log.error('Query Failed', JSON.stringify(errorDetails, null, 1))
-      //     return done(err)
-      //   }
-
-      //   execQuery(selectQuery, function (err, res) {
-      //     if (error(selectQuery, args, err, done)) {
-      //       var errorDetails = {
-      //         message: err.message,
-      //         err: err,
-      //         stack: err.stack,
-      //         query: query
-      //       }
-      //       seneca.log.error('Query Failed', JSON.stringify(errorDetails, null, 1))
-      //       return done(err)
-      //     }
-
-      //     var entp = res.rows[0]
-
-      //     if (entp) {
-      //       var query = QueryBuilder.deletestm(qent, {id: entp.id})
-
-      //       execQuery(query, function (err, res) {
-      //         if (err) {
-      //           return done(err)
-      //         }
-
-      //         seneca.log(args.tag$, 'remove', res.rowCount)
-      //         return done(null)
-      //       })
-      //     }
-      //     else {
-      //       return done(null)
-      //     }
-      //   })
-      // })
-    // }
+    var query = QueryBuilder.deletestm(qent, q)
+    return done(null, {query: query})
   })
 }
