@@ -16,13 +16,24 @@ module.exports = function queryBuilder (options) {
 
     if (update) {
       query = QueryBuilder.updatestm(ent)
-    }
-    else {
-      ent.id = ent.id$ || Uuid()
-      query = QueryBuilder.savestm(ent)
+      return done(null, {query: query, operation: 'update'})
     }
 
-    return done(null, {query: query, operation: update ? 'update' : 'save'})
+    if (ent.id$) {
+      ent.id = ent.id$
+      query = QueryBuilder.savestm(ent)
+      return done(null, {query: query, operation: 'save'})
+    }
+
+    seneca.act({role: storeName, hook: 'generate_id'}, function (err, result) {
+      if (err) {
+        seneca.log.error('hook generate_id failed')
+        return done(err)
+      }
+      ent.id = result.id
+      query = QueryBuilder.savestm(ent)
+      return done(null, {query: query, operation: 'save'})
+    })
   })
 
   seneca.add({role: storeName, hook: 'load'}, function (args, done) {
@@ -37,8 +48,6 @@ module.exports = function queryBuilder (options) {
   seneca.add({role: storeName, hook: 'list'}, function (args, done) {
     var qent = args.qent
     var q = args.q
-
-    var list = []
 
     buildSelectStatement(q, function (err, query) {
       return done(err, {query: query})
