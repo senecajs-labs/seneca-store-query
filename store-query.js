@@ -5,11 +5,12 @@ var Uuid = require('node-uuid')
 var RelationalStore = require('./lib/relational-util')
 var QueryBuilder = require('./lib/query-builder')
 
+var actionRole = 'sql'
+
 module.exports = function queryBuilder (options) {
   var seneca = this
-  var storeName = 'postgresql-store'
 
-  seneca.add({role: storeName, hook: 'save'}, function (args, done) {
+  seneca.add({role: actionRole, hook: 'save'}, function (args, done) {
     var ent = args.ent
     var query
     var update = !!ent.id
@@ -25,7 +26,7 @@ module.exports = function queryBuilder (options) {
       return done(null, {query: query, operation: 'save'})
     }
 
-    seneca.act({role: storeName, hook: 'generate_id'}, function (err, result) {
+    seneca.act({role: actionRole, hook: 'generate_id', target: args.target}, function (err, result) {
       if (err) {
         seneca.log.error('hook generate_id failed')
         return done(err)
@@ -36,7 +37,7 @@ module.exports = function queryBuilder (options) {
     })
   })
 
-  seneca.add({role: storeName, hook: 'load'}, function (args, done) {
+  seneca.add({role: actionRole, hook: 'load'}, function (args, done) {
     var qent = args.qent
     var q = args.q
 
@@ -45,7 +46,7 @@ module.exports = function queryBuilder (options) {
     })
   })
 
-  seneca.add({role: storeName, hook: 'list'}, function (args, done) {
+  seneca.add({role: actionRole, hook: 'list'}, function (args, done) {
     var qent = args.qent
     var q = args.q
 
@@ -86,7 +87,7 @@ module.exports = function queryBuilder (options) {
     }
   })
 
-  seneca.add({role: storeName, hook: 'remove'}, function (args, done) {
+  seneca.add({role: actionRole, hook: 'remove'}, function (args, done) {
     var qent = args.qent
     var q = args.q
 
