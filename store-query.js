@@ -96,14 +96,14 @@ module.exports = function queryBuilder (options) {
           return done(errorDetails)
         }
         query = {}
-        query.text = QueryBuilder.fixPrepStatement(q[0])
+        query.text = QueryBuilder.fixPrepStatement(q[0], sTypes)
         query.values = _.clone(q)
         query.values.splice(0, 1)
         return done(null, query)
       }
       else {
         if (q.ids) {
-          return done(null, QueryBuilder.selectstmOr(qent, q))
+          return done(null, QueryBuilder.selectstmOr(qent, q, sTypes))
         }
         else {
           QueryBuilder.selectstm(qent, q, sTypes, done)
