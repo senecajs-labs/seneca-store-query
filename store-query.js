@@ -115,8 +115,9 @@ module.exports = function queryBuilder (options) {
   seneca.add({role: actionRole, hook: 'remove'}, function (args, done) {
     var qent = args.qent
     var q = args.q
+    var sTypes = specificTypes(args.target)
 
-    var query = QueryBuilder.deletestm(qent, q)
+    var query = QueryBuilder.deletestm(qent, q, sTypes)
     return done(null, {query: query})
   })
 }
