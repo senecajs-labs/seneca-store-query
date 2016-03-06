@@ -10,19 +10,41 @@ var actionRole = 'sql'
 module.exports = function queryBuilder (options) {
   var seneca = this
 
+  function specificTypes(storeName) {
+    var sTypes = {
+      escape: '"',
+      prepared: '$'
+    }
+    sTypes.name = storeName
+
+    if (storeName === 'mysql-store') {
+      sTypes.escape = '`'
+      sTypes.prepared = '?'
+    }
+
+    return sTypes
+  }
+
   seneca.add({role: actionRole, hook: 'save'}, function (args, done) {
     var ent = args.ent
-    var query
     var update = !!ent.id
+    var query
+    var autoIncrement = args.auto_increment || false
+    var sTypes = specificTypes(args.target)
 
     if (update) {
-      query = QueryBuilder.updatestm(ent)
+      query = QueryBuilder.updatestm(ent, sTypes)
       return done(null, {query: query, operation: 'update'})
     }
 
     if (ent.id$) {
       ent.id = ent.id$
-      query = QueryBuilder.savestm(ent)
+      query = QueryBuilder.savestm(ent, sTypes)
+      return done(null, {query: query, operation: 'save'})
+    }
+
+    if (autoIncrement) {
+      query = QueryBuilder.savestm(ent, sTypes)
       return done(null, {query: query, operation: 'save'})
     }
 
@@ -32,7 +54,7 @@ module.exports = function queryBuilder (options) {
         return done(err)
       }
       ent.id = result.id
-      query = QueryBuilder.savestm(ent)
+      query = QueryBuilder.savestm(ent, sTypes)
       return done(null, {query: query, operation: 'save'})
     })
   })
