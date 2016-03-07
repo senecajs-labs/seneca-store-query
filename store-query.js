@@ -1,8 +1,6 @@
 'use strict'
 
 var _ = require('lodash')
-var Uuid = require('node-uuid')
-var RelationalStore = require('./lib/relational-util')
 var QueryBuilder = require('./lib/query-builder')
 
 var actionRole = 'sql'
@@ -10,7 +8,7 @@ var actionRole = 'sql'
 module.exports = function queryBuilder (options) {
   var seneca = this
 
-  function specificTypes(storeName) {
+  function specificTypes (storeName) {
     var sTypes = {
       escape: '"',
       prepared: '$'
