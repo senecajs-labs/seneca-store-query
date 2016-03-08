@@ -32,8 +32,7 @@
   "homepage": "https://github.com/mihaidma/seneca-store-query#readme",
   "dependencies": {
     "lodash": "3.10.1",
-    "node-uuid": "1.4.7",
-    "seneca-postgres-store": "https://github.com/senecajs/seneca-postgres-store.git"
+    "node-uuid": "1.4.7"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -44,6 +43,7 @@
     "eslint-plugin-standard": "1.x.x",
     "lab": "6.x.x",
     "seneca": "1.2.0",
-    "seneca-store-test": "1.0.0"
+    "seneca-store-test": "1.0.0",
+    "seneca-postgres-store": "https://github.com/senecajs/seneca-postgres-store.git"
   }
 }
