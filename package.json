@@ -12,7 +12,7 @@
     "build": "docker-compose build",
     "start": "docker-compose up",
     "stop": "docker-compose kill",
-    "test": "lab test/*.test.js -r console -v -L -m 3000 -t 60",
+    "test": "lab test/*.test.js -r console -v -L -m 3000",
     "lint": "lab -dL",
     "coverage": "lab -s test/*test.js  -r lcov | coveralls",
     "annotate": "docco lib/query-builder.js -o doc"
@@ -32,7 +32,8 @@
   "homepage": "https://github.com/mihaidma/seneca-store-query#readme",
   "dependencies": {
     "lodash": "3.10.1",
-    "node-uuid": "1.4.7"
+    "node-uuid": "1.4.7",
+    "seneca-postgres-store": "https://github.com/senecajs/seneca-postgres-store.git"
   },
   "devDependencies": {
     "chai": "3.5.0",

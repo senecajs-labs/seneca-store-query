@@ -18,7 +18,7 @@ var si = Seneca({
 
 describe('seneca-store-query tests ', function () {
   before({}, function (done) {
-    si.use(require('postgresql-store'), DBConfig)
+    si.use(require('seneca-postgres-store'), DBConfig)
     si.ready(done)
   })
 
