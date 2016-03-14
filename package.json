@@ -1,10 +1,21 @@
 {
   "name": "seneca-store-query",
   "version": "0.0.1",
-  "description": "seneca store extended query",
+  "description": "Extended query for Seneca framework stores",
   "main": "store-query.js",
+  "license": "MIT",
+  "author": {
+    "name": "Mihai Dima",
+    "email": "mihaizn@gmail.com"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "docker-compose build",
+    "start": "docker-compose up",
+    "stop": "docker-compose kill",
+    "test": "lab test/*.test.js -r console -v -L -m 3000",
+    "lint": "lab -dL",
+    "coverage": "lab -s test/*test.js  -r lcov | coveralls",
+    "annotate": "docco lib/query-builder.js -o doc"
   },
   "repository": {
     "type": "git",
@@ -15,8 +26,6 @@
     "store",
     "query"
   ],
-  "author": "Mihai Dima",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mihaidma/seneca-store-query/issues"
   },
@@ -24,5 +33,17 @@
   "dependencies": {
     "lodash": "3.10.1",
     "node-uuid": "1.4.7"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "code": "1.5.x",
+    "docco": "0.7.0",
+    "eslint-config-seneca": "1.x.x",
+    "eslint-plugin-hapi": "4.x.x",
+    "eslint-plugin-standard": "1.x.x",
+    "lab": "6.x.x",
+    "seneca": "1.2.0",
+    "seneca-store-test": "1.0.0",
+    "seneca-postgres-store": "https://github.com/senecajs/seneca-postgres-store.git"
   }
 }
