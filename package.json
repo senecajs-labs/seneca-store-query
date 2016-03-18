@@ -32,7 +32,8 @@
   "homepage": "https://github.com/mihaidma/seneca-store-query#readme",
   "dependencies": {
     "lodash": "3.10.1",
-    "node-uuid": "1.4.7"
+    "node-uuid": "1.4.7",
+    "seneca-standard-query": "1.0.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
