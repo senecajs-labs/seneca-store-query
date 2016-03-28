@@ -9,7 +9,7 @@ seneca-store-query
 [![Dependency Status][david-badge]][david-url]
 [![Gitter][gitter-badge]][gitter-url]
 
-seneca-store-query is a plugin for the [Seneca][seneca] MVP toolkit that extends the query capabilites of the [Seneca][seneca] store plugins. It currently works with [seneca-postgres-store][postgres-store] and [seneca-mysql-store][mysql-store]
+seneca-store-query is a plugin for the [Seneca][seneca] MVP toolkit that extends the query capabilites of the [seneca-standard-store][standard-store]. It currently works with [seneca-postgres-store][postgres-store] and [seneca-mysql-store][mysql-store]
 
 ```js
 Usage:
@@ -37,7 +37,7 @@ Usage:
 
 ## Seneca extended query format
 
-This plugin extends the basic store functionality with support for more complex queries.
+This plugin extends the basic standard store functionality with support for more complex queries.
 
 ### Comparison query operators
 
@@ -53,9 +53,9 @@ list$ is extended with the following comparison operators:
 - nin$: `.list$({ f1: {nin$: ['v1', 'v2']} })` for not-in. nin$ operator accepts only values of type array. 
 
 
-Note: you can use `sort$`, `limit$`, `skip$` and `fields$` together.
-
-Note: you can use any operators described above together.
+Notes:
+- the `sort$`, `limit$`, `skip$` and `fields$` can be used together.
+- the operators described above can be used together
 
 ### Logical query operators
 
@@ -64,13 +64,12 @@ list$ is extended with the following logical operators:
 - or$: `.list$({ or$: [{name: 'something'}, {price: 200}]})`
 - and$: `.list$({ and$: [{name: 'something'}, {price: 200}]})`
 
-Note: These logical operators accepts only arrays as values.
+Notes:
+- These logical operators accepts only arrays as values.
+- These operators can be used together to build more complex queries
+- These logical operators can be used also with any Comparison query operators described above.
 
-Note: These operators can be used together to build more complex queries
-
-Note: These logical operators can be used also with any Comparison query operators described above.
-
-Note: A complex example:
+A complex example:
 
 ```js
 ent.list$( 
@@ -122,3 +121,4 @@ examples, extra testing, or new features please get in touch.
 [seneca]: http://senecajs.org/
 [postgres-store]: https://github.com/senecajs/seneca-postgres-store
 [mysql-store]: https://github.com/senecajs/seneca-mysql-store
+[standard-store]: https://github.com/senecajs/seneca-standard-store
