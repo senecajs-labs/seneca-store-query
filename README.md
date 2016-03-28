@@ -9,7 +9,7 @@ seneca-store-query
 [![Dependency Status][david-badge]][david-url]
 [![Gitter][gitter-badge]][gitter-url]
 
-seneca-store-query is a plugin for the [Seneca][seneca] MVP toolkit that extends the query capabilites of the [seneca-standard-store][standard-store]. It currently works with [seneca-postgres-store][postgres-store] and [seneca-mysql-store][mysql-store]
+seneca-store-query is a plugin for the [Seneca][seneca] MVP toolkit that extends the query capabilites of the [seneca-standard-query][standard-query]. It currently works with [seneca-postgres-store][postgres-store] and [seneca-mysql-store][mysql-store]
 
 ```js
 Usage:
@@ -121,4 +121,4 @@ examples, extra testing, or new features please get in touch.
 [seneca]: http://senecajs.org/
 [postgres-store]: https://github.com/senecajs/seneca-postgres-store
 [mysql-store]: https://github.com/senecajs/seneca-mysql-store
-[standard-store]: https://github.com/senecajs/seneca-standard-store
+[standard-query]: https://github.com/senecajs/seneca-standard-query
