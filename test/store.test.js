@@ -20,7 +20,7 @@ describe('seneca-store-query tests ', function () {
   before({}, function (done) {
     si.use(require('seneca-postgres-store'), DBConfig)
     si.ready(function () {
-      si.use(require('seneca-store-query'))
+      si.use(require('..'))
       si.ready(done)
     })
   })
