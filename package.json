@@ -58,6 +58,6 @@
     "lab": "6.x.x",
     "seneca": "1.3.0",
     "seneca-store-test": "1.0.0",
-    "seneca-postgres-store": "mihaidma/seneca-postgres-store#standardquery"
+    "seneca-postgres-store": "senecajs/seneca-postgres-store"
   }
 }
