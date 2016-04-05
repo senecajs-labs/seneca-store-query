@@ -1,12 +1,12 @@
 'use strict'
 
 var _ = require('lodash')
-var QueryBuilder = require('./lib/query-builder')
-
 var actionRole = 'sql'
+var name = 'store-query'
 
 module.exports = function queryBuilder (options) {
   var seneca = this
+  var QueryBuilder = require('./lib/query-builder')(seneca, options)
 
   function specificTypes (storeName) {
     var sTypes = {
@@ -75,4 +75,8 @@ module.exports = function queryBuilder (options) {
       }
     }
   })
+
+  return {
+    name: name
+  }
 }
