@@ -1,6 +1,6 @@
 {
   "name": "seneca-store-query",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Extended query for Seneca framework stores",
   "main": "store-query.js",
   "license": "MIT",
@@ -46,7 +46,7 @@
   "dependencies": {
     "lodash": "3.10.1",
     "node-uuid": "1.4.7",
-    "seneca-standard-query": "0.0.3"
+    "seneca-standard-query": "0.0.x"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -58,6 +58,6 @@
     "lab": "6.x.x",
     "seneca": "1.3.0",
     "seneca-store-test": "1.0.0",
-    "seneca-postgres-store": "mihaidma/seneca-postgres-store#snakecamel"
+    "seneca-postgres-store": "2.x.x"
   }
 }
