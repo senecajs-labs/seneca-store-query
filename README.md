@@ -43,14 +43,14 @@ This plugin extends the basic standard store functionality with support for more
 
 list$ is extended with the following comparison operators:
 
-- ne$: `.list$({ f1: {ne$: v1} })` for not-equal. 
-- eq$: `.list$({ f1: {eq$: v1} })` for equal. 
-- lte$: `.list$({ f1: {lte$: 5} })` for less than or equal. 
-- lt$: `.list$({ f1: {lt$: 5} })` for less than. 
-- gte$: `.list$({ f1: {gte$: 5} })` for greater than or equal. 
-- gt$: `.list$({ f1: {gt$: 5} })` for greater than. 
-- in$: `.list$({ f1: {in$: [10, 20]} })` for in. in$ operator accepts only values of type array. 
-- nin$: `.list$({ f1: {nin$: ['v1', 'v2']} })` for not-in. nin$ operator accepts only values of type array. 
+- ne$: `.list$({ f1: {ne$: v1} })` for not-equal.
+- eq$: `.list$({ f1: {eq$: v1} })` for equal.
+- lte$: `.list$({ f1: {lte$: 5} })` for less than or equal.
+- lt$: `.list$({ f1: {lt$: 5} })` for less than.
+- gte$: `.list$({ f1: {gte$: 5} })` for greater than or equal.
+- gt$: `.list$({ f1: {gt$: 5} })` for greater than.
+- in$: `.list$({ f1: {in$: [10, 20]} })` for in. in$ operator accepts only values of type array.
+- nin$: `.list$({ f1: {nin$: ['v1', 'v2']} })` for not-in. nin$ operator accepts only values of type array.
 
 
 Notes:
@@ -72,18 +72,18 @@ Notes:
 A complex example:
 
 ```js
-ent.list$( 
-  { 
+ent.list$(
+  {
     or$: [
-      {name: 'something'}, 
+      {name: 'something'},
       {
         and$: [
-          {price: {gte$: 100}}, 
+          {price: {gte$: 100}},
           {name: 'other'}
         ]
-      }, 
+      },
       {color: { ne$: 'red' }}
-    ], 
+    ],
     sort$: {name: 1},
     fields$: ['name', 'color']
   }, function(err, list){
@@ -106,14 +106,15 @@ Note: The implicit id that is generated on save$ has an uuid value. To override 
 
 
 ## Contributing
-We encourage participation. If you feel you can help in any way, be it with
-examples, extra testing, or new features please get in touch.
+The [Senecajs org](https://github.com/senecajs/) encourage open participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.
 
+## License
+Copyright Mihai Dima and other contributors 2016, Licensed under [MIT][].
 
 [npm-badge]: https://img.shields.io/npm/v/seneca-store-query.svg
 [npm-url]: https://npmjs.com/package/seneca-store-query
-[travis-badge]: https://api.travis-ci.org/senecajs/seneca-store-query.svg
-[travis-url]: https://travis-ci.org/senecajs/seneca-store-query
+[travis-badge]: https://api.travis-ci.org/senecajs-labs/seneca-store-query.svg
+[travis-url]: https://travis-ci.org/senecajs-labs/seneca-store-query
 [david-badge]: https://david-dm.org/senecajs/seneca-store-query.svg
 [david-url]: https://david-dm.org/senecajs/seneca-store-query
 [gitter-badge]: https://badges.gitter.im/Join%20Chat.svg
@@ -122,3 +123,4 @@ examples, extra testing, or new features please get in touch.
 [postgres-store]: https://github.com/senecajs/seneca-postgres-store
 [mysql-store]: https://github.com/senecajs/seneca-mysql-store
 [standard-query]: https://github.com/senecajs/seneca-standard-query
+[MIT]: ./LICENSE
