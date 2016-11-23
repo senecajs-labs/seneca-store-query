@@ -45,8 +45,8 @@
   "homepage": "https://github.com/senecajs-labs/seneca-store-query#readme",
   "dependencies": {
     "lodash": "3.10.1",
-    "node-uuid": "1.4.7",
-    "seneca-standard-query": "0.0.5"
+    "seneca-standard-query": "0.0.5",
+    "uuid": "^3.0.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
