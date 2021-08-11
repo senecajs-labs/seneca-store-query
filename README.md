@@ -9,6 +9,9 @@ seneca-store-query
 [![Dependency Status][david-badge]][david-url]
 [![Gitter][gitter-badge]][gitter-url]
 
+| ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
+|---|---|
+
 seneca-store-query is a plugin for the [Seneca][seneca] MVP toolkit that extends the query capabilites of the [seneca-standard-query][standard-query]. It currently works with [seneca-postgres-store][postgres-store] and [seneca-mysql-store][mysql-store]
 
 ```js
